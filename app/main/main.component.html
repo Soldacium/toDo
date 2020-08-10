@@ -1,0 +1,110 @@
+<main>
+    <!-- for searching porpouses -->
+    <nav>
+        <h2></h2>
+        <div class="input-field">
+            <input class="search" (keyup)="searchForPhrase(searchPhrase)" [(ngModel)]='searchPhrase'>
+            <div class="search-icon"></div>
+        </div>   
+        <div class="all-tags" >
+            <button 
+            class="tag" 
+            *ngFor='let tag of tags' 
+            (click)='searchForTag(tag)'
+            [ngClass]="(searchTags.includes(tag)?'active':'naah')">
+                {{tag}}
+                
+            </button>
+        </div>   
+        <div class="sort">
+            Sort by
+        </div>
+
+    </nav>
+      
+    
+
+    <!-- displaying the items -->
+    <div class="items-wrap">
+        <div class="item add-item" *ngIf='searchItems.length == 0 || searchItems == null'>
+            <button class="add-item-button" (click)='newItem()' [routerLink]='["/add-note"]'>
+
+            </button>
+        </div>
+        <div class="item" *ngFor='let item of searchItems'>
+            <!-- for all -->
+            <h1>{{item.title}}</h1>
+            <h4>{{item.time.date}}</h4>
+
+            <!-- for notes -->
+            <div class='item-desc' *ngIf='item.desc'>
+                {{item.desc}} 
+                <div class="item-desc_expand" (click)='expandItem(item)'></div>
+            </div>
+
+            <!-- for toDos -->
+            <div class='item-desc' *ngIf='item.toDo'>
+                <div class='doing' *ngFor='let doing of item.toDo'>
+                    <div class="doing-icon done" *ngIf='doing.done'></div>
+                    <div class="doing-icon undone" *ngIf='!doing.done'></div>
+                    <div class="doing-text">{{doing.desc}} </div>
+                </div>
+                <div class="item-desc_expand" (click)='expandItem(item)'></div>
+            </div>
+
+            <!-- for tags -->
+            <div class="item-time" *ngIf='item.when'>
+                <p>{{item.when}}</p>
+                <div></div> 
+                
+                
+            </div>
+            <div class="item-tags" *ngIf='item.tags'>
+                <div class="item-tag" *ngFor='let tag of item.tags'>
+                    {{tag}}
+                </div>
+            </div>
+            <div class="star">
+                
+            </div>
+        </div>
+        
+    </div>
+
+
+    <!-- ater clicking item -->
+    <div class="overlay" *ngIf='currentItem !== undefined' (click)='closeItem()'>
+        <div class="expandeditem" (click)='$event.stopPropagation()'>
+            <h1>{{currentItem.title}}</h1>
+            <!-- if note -->
+            <div class="expandeditem-desc" *ngIf='currentItem.desc'>
+                {{currentItem.desc}}
+            </div>
+
+            <!-- if ToDo -->
+            <div class='expandeditem-desc' *ngIf='currentItem.toDo'>
+                <div class='expandedDoing' *ngFor='let doing of currentItem.toDo'>
+                    <button class="expandedDoing-icon done" *ngIf='doing.done' (click)='changeDone(doing)'></button>
+                    <button class="expandedDoing-icon undone" *ngIf='!doing.done' (click)='changeDone(doing)'></button>
+                    <div class="expandedDoing-text">{{doing.desc}} </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- buttons -->
+        <div class="expandeditem-options" >
+            <button class="close-item" (click)='closeItem()'></button>
+            <button class="delete-item" (click)='deleteItem()'></button>
+            <button class="edit-item" *ngIf='currentItem.desc'
+            (click)='editToDo()' 
+            [routerLink]='["/add-note"]' ></button>
+
+            <button class="edit-item" *ngIf='currentItem.toDo'
+            (click)='editToDo()' 
+            [routerLink]='["/add-todo"]'></button>
+        </div>
+
+
+    </div>
+</main>

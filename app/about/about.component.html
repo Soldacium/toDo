@@ -1,0 +1,59 @@
+<main>
+    <section>
+        <h1>What does this app do?</h1>
+        <p>Well, it it pretty simple, this app is made to store your notes and thoughts right here, on your own browser. </p>
+        
+    </section>
+    <section>
+        <h1>What exacly are it's functions?</h1>
+        <p>You can make notes, toDos, look what you need to do each day of the week, modify anything you want and save. All without logging in!</p>
+    </section>
+    <section>
+        <h1>How does it do it?</h1>
+        <p>The concept is pretty easy. After I've learned about <b>WHOLE 5MB OF LOCAL STORAGE</b>  available to each website on the internet, I knew what exacly it's pourpose could be. </p>
+        <p><b>5MB = 1024 * 1024 * 5 bytes = 5,242,880 charactes</b>  that can be saved on your browser.It doesn't seem like much, but if we consider that avg. book can have ~500,000 characters, and avg. person doesn't write books and esseys in app meant for notes and ToDos, than those ~5,000,000 characters will certainly suffice.</p>
+        <p>For those programming, I guess It's about as complicated as you'd expect with doing same thing using external database. Maybe less. Probably less.</p>
+        <p>In service, setup:</p>
+        <pre>
+            localStorage = localStorage;
+
+            keys = &#123;
+                settings: 'sett',
+                numOfNotes: 'NN',
+                notes: 'NO',
+                toDos: 'TD',
+            
+            &#125;
+        </pre>
+        <p>Then some functions like this:</p>
+        <pre>
+            saveSettings(settings: object) &#123;
+                const settingsString = JSON.stringify(settings);
+            
+                localStorage.setItem(this.keys.settings,settingsString);
+            &#125;
+            
+            getSettings() &#123;
+                return JSON.parse(localStorage.getItem(this.keys.settings));
+            &#125;
+        </pre>
+        <p>And finally</p>
+        <pre>
+            import &#123; LocalDataService &#125; from '../services/local-data.service';
+
+            [...]
+
+            constructor(private localData: LocalDataService) &#123;
+                this.settings = localData.getSettings()
+            &#125;
+
+        </pre>
+        <p>That's the main way I did it, all code available on github.</p>
+
+    </section>
+    <section>
+        <h1>Is it secure?</h1>
+        <p>It's secure from hackers attacking data server, as there is no data server to begin with. It is as secure as a note you could write on your computer's desktop.</p>
+        <p>It comes at cost at the moment though; your data won't prevail when changing devices, unless I implement logging in, in which case you could, but then,everything less secure and private.</p>
+    </section>
+</main>

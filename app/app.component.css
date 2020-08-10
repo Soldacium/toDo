@@ -1,0 +1,38 @@
+main{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+
+    z-index: 2;
+}
+
+
+
+.staticBG, .canvas{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    color: #d8ff2a;
+}
+
+.canvas{
+    
+
+}
+
+.staticBG{
+
+    
+}
+
+.visible{
+    display: flex;
+}
+
+.invis{
+    display: none;
+}

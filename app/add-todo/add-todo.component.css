@@ -1,0 +1,338 @@
+main{
+    width: 85%;
+    height: 100vh;
+    float: left;
+    position: relative;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 5% 10%;
+}
+hr{
+    width: 100%;
+    color: black;
+    size: 5px;
+}
+
+.title{
+    margin: 1rem;
+    padding: 1rem 1rem;
+    border: none;
+    border: 3px solid gray;
+    font-size: 1.5rem;
+    width: calc(200px + 40%);
+    text-align: center;
+    
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 6rem;
+    border-radius: 1.5rem;
+}
+
+.title:focus{
+    outline: none;
+}
+
+/* doing style */
+
+.doing-wrap{
+    display: flex;
+    flex-direction: column;
+    width: calc(260px + 35%);
+    
+    padding: 2rem 1rem;
+    
+}
+
+.doing{
+    margin: 0.6rem;
+    padding: 1.5rem 1rem;
+    border: none;
+    border-radius: 1.5rem;
+    display: flex;
+    
+    background-color: white;
+    position: relative;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    
+
+    text-align: center;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    
+    
+    /*
+    box-shadow: rgb(226, 226, 226) 0 0 3px 2px;
+    */
+
+    animation: doing-anim ease-out 0.3s;
+    transition: 0.3s;
+}
+
+.doing.finished{
+    filter: brightness(100%);
+    box-shadow: rgb(226, 226, 226) 0 0 0px 0px;
+
+}
+.doing.unfinished{
+    /*
+    filter: brightness(96%);
+    box-shadow: rgb(226, 226, 226) 0 0 3px 2px;*/
+}
+
+@keyframes doing-anim{
+    0%{
+        opacity: 0.5;
+        left: -80px;
+    }100%{
+        opacity: 1;
+        left: 0;
+    }
+}
+
+.doing p{
+    margin: 0;
+    font-size: 1.4rem;
+    margin: 0.4rem;
+    word-wrap: break-word;
+    max-width: calc(100% - 6rem);
+    text-align: left;
+}
+/*
+.doing > *{
+    margin: 0;
+}
+
+.doing input{
+    min-width: 25px;
+    min-height: 25px;
+    margin-right: 25px;
+    border-radius: 50% ;
+    background-color: rgb(206, 206, 206);
+}
+*/
+
+.delete{
+    right: 15px;
+    bottom: -40px;
+    width: 25px;
+    height: 25px;
+    background-color: rgba(255, 0, 0, 0);
+    transition: 0.3s;
+    position: absolute;
+
+    background-image: url('../../assets/icons/close1.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+}
+
+.doing:hover > .delete{
+    bottom: 15px;
+    cursor: pointer;
+}
+
+/* checkbox */
+/* The container */
+.container {
+    display: flex;
+    position: relative;
+    padding-right: 1.5rem;
+    
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-right: 2rem;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2.5rem;
+    width: 2.5rem;
+    background-color: rgb(241, 241, 241);
+    border-radius: 50%;
+    transition: 0.3s;
+    
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: rgba(0, 0, 0, 0.082);
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #ffffff;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    transition: 0.3s;
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/icons/correct.svg');
+    background-size: cover;
+    filter: hue-rotate(-120deg);
+  }
+
+
+
+/* adding */
+.addDoing{
+    width: 50px;
+    height: 50px;
+    border: none;
+    background-image: url('../../assets/icons/add1.svg');
+    background-size: cover;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+.addDoing:hover{
+    filter: invert(80%);
+    cursor: pointer;
+    background-color: white;
+}
+
+
+.doing-customize{
+    display: flex;
+    width: 100%;
+    position: relative;
+    margin: 0.6rem;
+}
+
+.doing-customize textarea{
+    position: relative;
+    max-height: 300px;
+    padding: 1rem 1rem;
+    border: none;
+    box-shadow: 0 0 2px 1px rgb(187, 187, 187);
+    font-size: 1.5rem;
+    width: calc(100% - 50px - 1rem);
+    border-radius: 1.5rem;
+    margin-right: 1rem;
+    
+    background-color: rgb(255, 255, 255);
+    resize: vertical;
+    
+}
+
+textarea:focus{
+    outline: none;
+}
+
+/* picking date */
+
+.date-include{
+    display: flex;
+    font-size: 1.3rem;
+    padding: 0.5rem 1rem;
+    background-color: white;
+    border-radius: 10px;
+
+}
+.date-include > input{
+    height: 1.3rem;
+    width: 1.3rem;
+    margin-right: 1rem;
+}
+.date-pick{
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+.date-pick > input{
+    margin: 1rem;
+    padding: 0.5rem;
+    font-size: 1.3rem;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    color: rgb(41, 41, 41);
+    transition: 0.3s;
+}
+.date-pick > input:disabled{
+    filter: brightness(60%);
+    background-color: rgba(255, 255, 255, 0.425);
+    color: rgb(41, 41, 41);
+}
+.date-pick > div{
+    background-image: url('../../assets/icons/arrow-right.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 2rem;
+    width: 2rem;
+}
+
+/* saving n options */
+
+.save{
+    padding: 1rem 3rem;
+    background-color: black;
+    color: white;
+    font-size: 1.3rem;
+    margin-top: 5rem;
+    border: none;
+}
+
+
+.saved{
+    position: fixed;
+    padding: 1rem 4rem;
+    left: 50%;
+    top: -5px;
+
+    transform: translate(-50%, 0%);
+    background-color: rgb(255, 255, 255);
+    border: 3px solid rgb(117, 117, 117);
+    display: flex;
+    align-content: center;
+    align-items: center;
+    border-radius: 0px 0 10px 10px;
+}
+.saved > *{
+    margin: auto;
+}
+
+@media screen and (max-width: 1000px){
+    main{
+        width: 100%;
+    }
+}

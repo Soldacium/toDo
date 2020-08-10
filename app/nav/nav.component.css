@@ -1,0 +1,445 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+/* nav */
+
+.logo{
+    position: absolute;
+    left: 50%;
+    top: 40px;
+    transform: translate(-50%,-50%);
+    font-family: 'Indie Flower', cursive;
+    transition: 0.3s;
+    font-size: 2rem;
+}
+
+.logo:hover{
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
+    cursor: pointer;
+    
+}
+
+
+.links{
+    position: relative;
+    float: left;
+    width: 15%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 2px 1px rgb(187, 187, 187);
+    background-color: rgb(255, 255, 255);
+    z-index: 99;
+    filter: invert();
+    
+}
+
+ul{
+    text-align: center;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+ul a {
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 500;
+    padding: 0.7rem;
+    margin: 0.5rem 0;
+    position: relative;
+    display: block;
+    left: 0;
+    transition: 0.3s ease-in-out;
+    border-radius: 8px;
+    color: rgb(0, 0, 0);
+}
+
+ul a:hover{
+    left: 12px;
+    background-color: rgb(243, 242, 242);
+    
+}
+
+.options-button{
+    position: absolute;
+    left: 50%;
+    bottom: 120px;
+    transform: translate(-50%,-50%);
+    height: 50px;
+    width: 50px;
+    background-image: url('../../assets/icons/settings.svg');
+    background-size: 40px 40px;
+    background-position: center;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    border-radius: 30px;
+    filter: invert(30%);
+    transition: 0.3s;
+}
+
+.options-button:hover{
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
+    cursor: pointer;
+    filter: invert(0%);
+}
+
+
+.about-button{
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    transform: translate(-50%,-50%);
+    height: 50px;
+    width: 50px;
+    background-image: url('../../assets/icons/question.svg');
+    background-size: 40px 40px;
+    background-position: center;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    border-radius: 30px;
+    filter: invert(30%);
+    transition: 0.3s;
+}
+
+.about-button:hover{
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
+    cursor: pointer;
+    filter: invert(0%);
+}
+
+
+
+/* options */
+
+.overlay-options{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.233);
+    z-index: 50;
+}
+
+.options{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    background-color: white;
+    padding: 2% 5%;
+
+    width: calc(200px + 40%);
+    
+    
+    border-radius: 20px;
+}
+
+.bg-choose{
+    position: relative;
+    width: 100%;
+    height: 60px;
+    background-color: rgb(250, 250, 250);
+    box-shadow: 0 0 3px 2px rgb(163, 163, 163) inset;
+    display: flex;
+    overflow: hidden;
+    border-radius: 30px;
+    
+}
+
+.choice{
+    flex: 1 1 1rem;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+}
+
+.choice:focus{
+    outline: none;
+}
+
+.chosen{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    border: 1px solid gray;
+    top: 0;
+    background-color: rgb(255, 255, 255);
+    border-radius: 30px;
+    transition: 0.5s ease-out;
+}
+
+.chosen.left{
+    left: 0;
+}
+
+.chosen.right{
+    left: 50%;
+}
+
+
+/* style pickers */
+
+.colors{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    background-color: white;
+
+    width: 100%;
+    
+    
+}
+
+.colors > div{
+    flex: 1 1 15rem;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    position: relative;
+    padding: 5% 5%;
+    transition: 0.5s;
+    
+
+    
+}
+
+.bg-picker.unvis,.canvas-picker.unvis{
+    opacity: 0.3;
+}
+
+.picker{
+    min-width: calc(30px + 3%);
+    min-height: calc(30px + 2%);
+    margin: 0.6rem;
+    border-radius: 5px;
+    
+    cursor: pointer;
+    border: 2px solid rgb(73, 73, 73);
+    transition: 0.5s filter linear
+
+    
+    
+}
+
+.light{
+    filter: grayscale(0%);
+}
+.dark{
+    filter: grayscale(25%);
+}
+
+.picker-wrap{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    position: relative;
+
+    
+    
+}
+
+.svg-wrap{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.svg-type{
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: blue;
+    border: 2px solid rgb(73, 73, 73);
+    background-size: 150px 150px;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+    transition: 0.3s;
+    
+}
+
+.svg-type:nth-of-type(1n){background-image: url('../../assets/BGs/stingrays.svg');}
+.svg-type:nth-of-type(2n){background-image: url('../../assets/BGs/dots.svg');}
+.svg-type:nth-of-type(3n){background-image: url('../../assets/BGs/mountain.svg');}
+.svg-type:nth-of-type(4n){background-image: url('../../assets/BGs/field.svg');}
+.svg-type:nth-of-type(5n){background-image: url('../../assets/BGs/waves.svg');}
+
+.svg-type.naah{
+    filter: brightness(50%) grayscale(20%) contrast(200%);
+}
+.svg-type.active{
+    
+    filter: brightness(130%) grayscale(0%);
+}
+
+
+
+
+
+
+
+.save{
+    border: none;
+    background-color: black;
+    color: white;
+    padding: 1rem 3rem;
+    position: relative;
+    font-size: 1.5rem;
+    margin-top: 3rem;
+    transition: 0.3s;
+}
+.save:hover{
+    cursor: pointer;
+    background-color: rgb(41, 41, 41);
+}
+
+.close{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-image: url('../../assets/icons/close1.svg');
+    background-size: cover;
+    background-color: transparent;
+}
+
+
+/* responsive features */
+.overlay-nav{
+    display: none;
+    width: calc(60% + 160px);
+    height: 100%;
+    position: fixed;
+    background-color: black;
+    top: 0;
+    right: calc(-60% - 160px);
+    transition: 0.3s;
+    z-index: 150;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.overlay-nav a{
+    color: white;
+}
+
+.overlay-nav.active{
+    right: 0;
+}
+.overlay-nav.naah{
+    right: calc(-60% - 160px);
+}
+
+.links-responsive{
+    width: 100%;
+    position: relative;
+    display: none;
+    top: 0;
+    left: 0;
+    height: 10%;
+    background-color: white;
+    z-index: 200;
+    box-shadow: 0 0 3px 1px rgb(179, 179, 179);
+}
+
+
+
+.logo-responsive{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-family: 'Indie Flower', cursive;
+    transition: 0.3s;
+    font-size: 2rem;
+    margin: 0;
+}
+
+.hamburger{
+    position: absolute;
+    right: calc(1rem + 3%);
+    top: 50%;
+    transform: translate(0,-50%);
+    width: calc(30px + 2%);
+    height:  34px;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+
+}
+.hamburger:focus{outline: none;}
+
+.hamburger span{
+    position: absolute;
+    height: 4px;
+    border-radius: 3px;
+    width: 100%;
+    background: #000000;
+    top: 0;
+    transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+}
+
+.hamburger span:nth-child(1){
+    top:0px;
+ }
+
+.hamburger span:nth-child(2),
+.hamburger span:nth-child(3){
+    top: 13px;
+ }
+
+.hamburger span:nth-child(4){
+    top:26px;
+ }
+
+ .hamburger.active span:nth-child(1),
+ .hamburger.active span:nth-child(4){
+     opacity: 0;
+ }
+
+ .hamburger.active span:nth-child(2){
+     transform: rotate(45deg);
+ }
+ .hamburger.active span:nth-child(3){
+     transform: rotate(-45deg);
+ }
+/* hamburger stuff */
+@media screen and (max-width: 1000px){
+    .links{
+        display: none;
+        opacity: 0;
+    }
+
+    .links-responsive{
+        display: flex;
+    }
+
+    .overlay-nav{
+        display: flex;
+    }
+
+
+    
+}

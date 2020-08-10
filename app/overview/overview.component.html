@@ -1,0 +1,82 @@
+<main>
+    <section class='today'>
+        <div class="nothing" *ngIf='todayEvents.length == 0'>
+            <img src="../../assets/icons/vacation.svg" alt="">
+            <h1>There's nothing written for you today! 
+                </h1>
+                <h3>Day off or about to make plans?</h3>
+            <button [routerLink]='["/main"]'>Check all notes</button>
+        </div>
+
+        <div class="something" *ngIf='todayEvents.length >= 1'>
+            <h1>Today</h1>
+            <div class="switchToDos">
+                <button class="switch left" (click)='prevToDo()'></button>
+                {{currentEvent + 1}}/{{todayEvents.length}}
+                <button class="switch right" (click)='nextToDo()'></button>
+            </div>
+            <div class="toDo">
+                <h1>
+                    {{todayEvents[currentEvent].title}}
+                </h1>
+                
+                <div class="doings">
+                    <div class="doing" *ngFor='let doing of todayEvents[currentEvent].toDo'>
+                        <div class="icon done" *ngIf='doing.done'>
+
+                        </div>
+                        <div class="icon undone" *ngIf='!doing.done'>
+
+                        </div>
+                        <div class="doing-desc">
+                           {{doing.desc}} 
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="calendar">
+        <h1 class="month-year">
+            {{monthName}} {{thisYear}}
+        </h1>
+        <div class="choose">
+            <button class="prev" (click)='previousMonth()'>Prev</button>
+            <button class="current">Curr</button>
+            <button class="next" (click)='nextMonth()'>Next</button>
+        </div>
+        <div class="calendar-wrap">
+
+            <div class="dayNames">
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                    <div>Sun</div>
+            </div>
+            <div class="days">
+                <div class="day missing" *ngFor='let day of missingDays.before'>
+                    {{day}}
+                </div>
+                <div class="day" *ngFor='let day of days'>
+                    <div>
+                      {{day.date.getDate()}}  
+
+                    </div>
+                    <div class="day-event" *ngFor='let event of day.events'>
+                        {{event.title}}
+                    </div>
+                    
+                </div>
+                <div class="day missing" *ngFor='let day of missingDays.after'>
+                    {{day}}
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

@@ -1,0 +1,248 @@
+main{
+    width: 85%;
+    height: 100vh;
+    float: left;
+    position: relative;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 5% 0;
+    background-color: white;
+}
+
+section{
+    display: flex;
+    width: 100%;
+    padding: 5%;
+    position: relative;
+
+    flex-direction: column;
+}
+
+/* display today section */
+.today{
+    
+    min-height: 80vh;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.today img{
+    height: 180px;
+    width: 180px;
+}
+
+
+
+.nothing{
+    align-items: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.nothing h1{
+    font-size: 2.3rem;
+}
+
+.nothing button{
+    border: none;
+    background: black;
+    padding: 1rem 3rem;
+    font-size: 1.3rem;
+    color: white;
+}
+
+.something{
+    
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+}
+.something > *{
+    margin: 2rem auto;
+}
+
+.switchToDos{
+    padding: 1rem;
+    font-size: 2rem;
+    align-items: center;
+    align-content: center;
+    display: flex;
+}
+.switchToDos > *{
+    margin: 1rem;
+}
+
+.switch{
+    height: 2rem;
+    width: 2rem;
+    background-size: cover;
+    border: none;
+    background-color: transparent;
+}
+.left{background-image: url('../../assets/icons/left.svg');}
+.right{background-image: url('../../assets/icons/right.svg');}
+
+.toDo{
+    align-items: center;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+}
+
+.toDo{
+    animation: newDay 0.8s;
+}
+
+.doings{
+    position: relative;
+    width: calc(200px + 30%);
+}
+
+
+/* doing */
+
+.icon{
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0rem 1rem;
+    background-size: cover;
+}
+
+.done{background-image: url('../../assets/icons/correctSimple.svg');}
+.undone{background-image: url('../../assets/icons/closeSimple.svg');}
+
+.doing{
+    display: flex;
+    position: relative;
+    width: 100%;
+    margin: 1.5rem 0rem;
+}
+
+.doing-desc{
+    width: calc(100% - 3.5rem);
+    word-wrap: break-word;
+    font-size: 1.5rem;
+}
+
+
+
+/* ***
+CALENDAR STYLING 
+* ****/
+.calendar {
+    align-items: center;
+    align-content: center;
+    
+}
+.calendar > *{
+    margin: 2rem 0rem;
+}
+.month-year{
+    margin: auto;
+}
+
+.choose{
+    display: flex;
+}
+
+.choose > button{
+    font-size: 1rem;
+    border: none;
+    padding: 1rem 3rem;
+    transition: 0.3s;
+    margin: 0.5rem;
+}
+.choose > button:hover{
+    filter: brightness(90%);
+    cursor: pointer;
+}
+
+.calendar-wrap{
+    width: 100%;
+    height: 70vh;
+    position: relative;
+    background-color: rgba(255, 235, 205, 0);
+}
+
+.dayNames{
+    width: 100%;
+    display: flex;
+
+}
+
+.dayNames > div{
+    flex: 1 1 5rem;
+    background-color: rgb(226, 226, 226);
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.days{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgba(137, 43, 226, 0);
+}
+
+.day{
+    display: flex;
+    flex: 1 1 14.2%;
+    height: 20%;
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(231, 231, 231);
+    padding: 10px;
+    transition: 0.3s;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: flex-start;
+    animation: newDay 0.8s;
+}
+
+@keyframes newDay{
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+
+.missing{
+    filter: brightness(80%);
+}
+
+.day:hover{
+    background-color: rgb(245, 245, 245);
+    cursor: pointer;
+}
+
+.day-event{
+    padding: 0.3rem;
+    background-color: gray;
+    color: rgb(0, 0, 0);
+    border-radius: 0.3rem;
+    font-weight: 400;
+    margin: 0.3rem 0;
+}
+.day-event:nth-of-type(1n){background-color: rgb(206, 255, 133);}
+.day-event:nth-of-type(2n){background-color: rgb(255, 198, 124);}
+.day-event:nth-of-type(4n){background-color: rgb(253, 124, 195);}
+
+
+
+@media screen and (max-width: 1000px){
+    main{
+        width: 100%;
+    }
+}

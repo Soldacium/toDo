@@ -1,0 +1,35 @@
+<main>
+
+    <form class="note" [formGroup]='note'>
+        
+        <input type="text" class="title" formControlName='title' placeholder="Your note">
+        
+        <textarea name="" id="" cols="30" rows="10" class='note-text' formControlName='desc'
+        oninput='this.style.height = "";this.style.height = this.scrollHeight + 30 + "px";window.scrollY = this.style.height + 100 + "px"'></textarea>
+        <h3>Tags & save</h3>
+        <div class="tags-wrap">
+            <div class="tag" *ngFor='let tag of note.value.tags'>
+                <span>{{tag}}</span>
+                <!-- wanted to make it <button> but for some reason it fires whenever sth new is added to the list,
+                    so this time I'm using <div> -->
+                <div class="delete" (click)='deleteTag(tag)'></div>
+            </div>   
+            <div class="addTag-wrap">
+                <input type="text" class="addTag" 
+                (keyup.enter)='addTag()' 
+                oninput='this.style.width = 80 + this.value.length * 7.5 + "px"'
+                placeholder="Tag">
+                <button class="addTag-button" (click)='addTag()'></button>
+            </div>
+            
+        </div>
+
+        
+        <button class="save" (click)='save()'>
+            Save
+        </button>
+    </form>
+
+
+
+</main>

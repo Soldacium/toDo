@@ -1,0 +1,164 @@
+
+    <nav class="links">
+        <h1 class="logo">Notty</h1>
+        <ul>
+            <li><a [routerLink]='["/main"]'>Saved</a></li>
+            <li><a [routerLink]='["/add-note"]'>Add note</a></li>
+            <li><a [routerLink]='["/add-todo"]'>Add ToDo</a></li>
+            <li><a [routerLink]='["/overview"]'>Current Plan</a></li>
+        </ul>     
+        <button class="options-button" (click)='changeOptions()'>
+
+        </button>
+        <button class="about-button" [routerLink]='["about"]'>
+
+        </button>
+    </nav>   
+    <nav class="links-responsive">
+        <h1 class="logo-responsive">Notty</h1>
+        <button class="hamburger" (click)='changeNav()'>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <div class="overlay-nav" [ngClass]="(openNav === true)?'active':'naah'">
+        
+        <ul>
+            <li><a [routerLink]='["/main"]' (click)='changeNav()'>Saved</a></li>
+            <li><a [routerLink]='["/add-note"]' (click)='changeNav()'>Add note</a></li>
+            <li><a [routerLink]='["/add-todo"]' (click)='changeNav()'>Add ToDo</a></li>
+            <li><a [routerLink]='["/overview"]' (click)='changeNav()'>Current Plan</a></li>
+        </ul>  
+        <button class="options-button" (click)='changeOptions()' (click)='changeNav()'>
+
+        </button>
+        <button class="about-button" [routerLink]='["about"]' (click)='changeNav()'>
+
+        </button>
+    </div>
+    <div class="overlay-options" *ngIf='openOptions'>
+        <div class="options">
+            <div class="bg-choose">
+                <div class="chosen" [ngClass]="(chosenBG === 'canvas')?'left':'right'"></div>
+                <button class="choice" (click)='selectBgType("canvas")'>Moving</button>
+                <button class="choice" (click)='selectBgType("static")'>Static</button>
+                
+            </div>
+            <div class="colors" >
+
+                <div class="canvas-picker" [ngClass]="(chosenBG === 'canvas')?'ok':'unvis'">
+                    <h1>Canvas</h1>
+
+                    
+                    <div class='picker-wrap'>
+                        
+                        <div class="picker"
+                        [ngClass]="(chosenBG === 'canvas')?'light':'dark'"
+                        [style.background]="canvasColors.color1"
+                        [cpCancelButton]="false"
+                        [(colorPicker)]="canvasColors.color1"
+                        [cpPosition]="'bottom-left'"></div>
+                        <h4>{{canvasColors.color1}}</h4>                        
+                    </div>
+                    <div class='picker-wrap'>
+                        
+                        <div class="picker"
+                        [ngClass]="(chosenBG === 'canvas')?'light':'dark'"
+                        [style.background]="canvasColors.color2"
+                        [cpCancelButton]="false"
+                        [(colorPicker)]="canvasColors.color2"
+                        [cpPosition]="'bottom-left'"></div>
+                        <h4>{{canvasColors.color2}}</h4>                        
+                    </div>
+                    <div class='picker-wrap'>
+                        
+                        <div class="picker"
+                        [ngClass]="(chosenBG === 'canvas')?'light':'dark'"
+                        [style.background]="canvasColors.color3"
+                        [cpCancelButton]="false"
+                        [(colorPicker)]="canvasColors.color3"
+                        [cpPosition]="'bottom-left'"></div>
+                        <h4>{{canvasColors.color3}}</h4>                        
+                    </div>
+                    <div class='picker-wrap'>
+                        
+                        <div class="picker"
+                        [ngClass]="(chosenBG === 'canvas')?'light':'dark'"
+                        [style.background]="canvasColors.color4"
+                        [cpCancelButton]="false"
+                        [(colorPicker)]="canvasColors.color4"
+                        [cpPosition]="'bottom-left'"></div>
+                        <h4>{{canvasColors.color4}}</h4>                        
+                    </div>
+                    <div class='picker-wrap'>
+                        
+                        <div class="picker"
+                        [ngClass]="(chosenBG === 'canvas')?'light':'dark'"
+                        [style.background]="canvasColors.color5"
+                        [cpCancelButton]="false"
+                        [(colorPicker)]="canvasColors.color5"
+                        [cpPosition]="'bottom-left'"></div>
+                        <h4>{{canvasColors.color5}}</h4>                        
+                    </div>
+                </div>
+
+
+                <div class="bg-picker" [ngClass]="(chosenBG === 'canvas')?'unvis':'ok'">
+                    <h1>Color</h1>
+                    <div class='picker-wrap'>
+                        
+                        <div class="picker"
+                        [ngClass]="(chosenBG === 'canvas')?'dark':'light'"
+                        [style.background]="bgColors.color1"
+                        [cpCancelButton]="false"
+                        [(colorPicker)]="bgColors.color1"
+                        [cpPosition]="'bottom-left'"></div>
+                        <h4>{{bgColors.color1}}</h4>                        
+                    </div>
+                    <div class='picker-wrap'>
+                        
+                        <div class="picker"
+                        [ngClass]="(chosenBG === 'canvas')?'dark':'light'"
+                        [style.background]="bgColors.color2"
+                        [cpCancelButton]="false"
+                        [(colorPicker)]="bgColors.color2"
+                        [cpPosition]="'bottom-left'"></div>
+                        <h4>{{bgColors.color2}}</h4>                        
+                    </div>
+                    <div class='picker-wrap'>
+                        
+                        <div class="picker"
+                        [ngClass]="(chosenBG === 'canvas')?'dark':'light'"
+                        [style.background]="bgColors.color3"
+                        [cpCancelButton]="false"
+                        [(colorPicker)]="bgColors.color3"
+                        [cpPosition]="'bottom-left'"></div>
+                        <h4>{{bgColors.color3}}</h4>                        
+                    </div>
+                    <h1>SVG</h1> 
+                    <div class="svg-wrap">
+                        <button 
+                        class="svg-type"
+                        *ngFor='let svgImg of svgs; index as i '
+                        (click)='svgChange(svgImg)'
+                        [ngClass]='(svgImg == svg)?"active":"naah"'
+                        [ngStyle]="{'background-image': getUrl(svgImg)}"></button>
+                    </div>
+                </div>
+            </div>
+        
+            <button class='save'
+                    (click)='saveSettings()'>Save</button>
+
+            <button class="close" (click)='changeOptions()'></button>
+        </div>
+    </div>
+
+
+
+
+
+

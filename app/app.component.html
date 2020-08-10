@@ -1,0 +1,16 @@
+<main>
+    <app-nav></app-nav>    
+    <router-outlet></router-outlet>    
+</main>
+
+<div class="canvas" [ngClass]="(bgType == 'canvas')?'visible':'invis'">
+    <canvas id="canvas"></canvas>
+</div>
+
+<div class="staticBG" [ngClass]="(bgType == 'static')?'visible':'invis'">
+
+</div>
+
+
+
+

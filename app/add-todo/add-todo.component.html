@@ -1,0 +1,54 @@
+
+<main>
+    <input type="text" placeholder="Your ToDo" class='title' (keyup)='updateTitle(title.value)' #title>
+    <div class="doing-wrap">
+        <div class="doing" *ngFor='let doing of currentToDo.toDo'
+        [ngClass]="(doing.done)?'finished':'unfinished'">
+            <label class="container">
+                <input type="checkbox" (click)='check(doing)'>
+                <span class="checkmark"></span>
+            </label>
+            <p>
+                {{doing.desc}}
+            </p>
+            <div class="delete" (click)='delete(doing)'>
+
+            </div>
+        </div>  
+        <div class="doing-customize">
+           
+            <textarea type="text" (keyup.enter)='addDoing()' id="doing-add"></textarea>
+            <button class="addDoing" (click)='addDoing()'>
+
+            </button> 
+        </div>              
+    </div>
+
+
+
+    <div class="date-include">
+        <input type="checkbox" (click)='date = !date' [checked]='!date'>
+        Include due date
+    </div>
+    <div class="date-pick" >
+        
+            <input type="date" name="" id="when" [disabled]='!date'>
+            <div></div>
+            <!-- 
+            <input type="date" name="" id="to" [disabled]='!date'>     
+            -->
+                   
+    </div>
+
+    
+
+    <button class="save" (click)='save()'>
+        Save
+    </button>
+</main>
+
+<!--
+<div class="saved" >
+    <h3>ToDo Saved...</h3>
+</div>    
+-->
